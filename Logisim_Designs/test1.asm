@@ -27,7 +27,14 @@ and r2
 and r3
 
 jump $3
+jump $255
 jump 0x3
 
 mov r1, 0xFF
 mov r2, $255
+mov r1, 0xAF
+mov r2, $123
+
+store 0xFF, R1
+
+load r2, 0xFF
