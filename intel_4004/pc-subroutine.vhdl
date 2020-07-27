@@ -26,7 +26,7 @@ begin
     begin
 
         if Sel = '1' then
-            /* Read Program counter in 3 cycle */
+            -- Read Program counter in 3 cycle
             if RW = '0' then
                 if cpt = 0 then
                     Data <= stack(3)(3 downto 0);
@@ -37,7 +37,7 @@ begin
                 end if;
                 cpt <= (cpt + 1) mod 4;
 
-            /* Branch back subroutine */
+            -- Branch back subroutine
             elsif Back = '0' and size >= 1 then
                 ptr <= ptr - 1;
                 size <= size - 1;
@@ -48,19 +48,19 @@ begin
 
                 stack(3) <= stack(ptr);
 
-            /* Branch in subroutine in 3 cycle */
+            -- Branch in subroutine in 3 cycle
             else
                 if cpt = 0 then
-                    /* Write return address (PC + 4) at ptr position */
+                    -- Write return address (PC + 4) at ptr position
                     stack(ptr) <= std_logic_vector(unsigned(stack(3)) + 4);
 
-                    /* Update size and ptr */
+                    -- Update size and ptr
                     if size < 4 then
                         size <= size + 1;
                     end if;
                     ptr <= (ptr + 1) mod 4;
 
-                    /* Updates new PC value */
+                    -- Updates new PC value
                     stack(3)(3 downto 0) <= Data;
 
                 elsif cpt = 1 then
