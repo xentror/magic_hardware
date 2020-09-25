@@ -6,13 +6,13 @@ entity ROM is
     port (
         ADDR: in std_logic_vector(12 downto 0); -- 4096 values
         RW : in std_logic;
-        DataOut :  out std_logic_vector(3 downto 0);
-        DataIn : in std_logic_vector(3 downto 0)
+        DataOut :  out std_logic_vector(7 downto 0);
+        DataIn : in std_logic_vector(7 downto 0)
     );
 end entity;
 
 architecture behavior of ROM is
-    type RAM is array(1023 downto 0) of std_logic_vector(3 downto 0);
+    type RAM is array(4095 downto 0) of std_logic_vector(7 downto 0);
     signal Data : RAM;
 begin
 
