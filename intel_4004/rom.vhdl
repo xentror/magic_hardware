@@ -7,7 +7,8 @@ entity ROM is
         ADDR: in std_logic_vector(12 downto 0); -- 4096 values
         RW : in std_logic;
         DataOut :  out std_logic_vector(7 downto 0);
-        DataIn : in std_logic_vector(7 downto 0)
+        DataIn : in std_logic_vector(7 downto 0);
+        Reset : in std_logic
     );
 end entity;
 
@@ -18,9 +19,11 @@ begin
 
     DataOut <= (others => 'Z');
 
-    process(RW)
+    process(RW, Reset)
     begin
-        if RW = '1' then
+        if Reset = '1' then
+            data <= (others => (others => '0'));
+        elsif RW = '1' then
             Data(to_integer(unsigned(Addr))) <= DataIn;
         end if;
 
