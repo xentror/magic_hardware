@@ -3,7 +3,7 @@
 The purpose of this logisim design was to learn how is working/ design
 a simple 8bits CPU.
 
-This CPU has 3 clock Cycle Instruction drive by a ring counter, wich
+This CPU execute an instruction in 3 Clock Ticks, driving by a ring counter, wich
 switches states each time time main clock tick.
 
 This CPU is based on the Havard model, with the Data Memory and Program
