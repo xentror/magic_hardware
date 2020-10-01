@@ -40,13 +40,13 @@ but made it easier during the design.
 
 This CPU has 11 Instructions:
 All instruction are on 2bytes and are divided this way:
-
+```
 XXXX XXXX XXXX XXXX
 |_______| |__| |__|
   Instr   |Dst Src|
   Opcode  |_______|
-              |_____ Immediate
-
+               |_____ Immediate
+```
 The first byte is for the intruction type (mov, load, store, ...)
 The second byte can be interpreted as a Immediate value or can be
 divided into a Dst/Src structure.
@@ -55,9 +55,9 @@ divided into a Dst/Src structure.
 
 Mov Dst, Src
 
-Mov Reg, Reg -> 10
-Mov Reg, Imm -> 11
-Mov Acc, Imm -> 12
+Mov Reg, Reg -> 10 \
+Mov Reg, Imm -> 11 \
+Mov Acc, Imm -> 12 \
 
 ### Load
 
@@ -65,15 +65,15 @@ Load Reg, ADDR -> 20
 
 ### Store
 
-Store ADDR, Reg -> 30
-Store ADDR, Imm -> 31
+Store ADDR, Reg -> 30 \
+Store ADDR, Imm -> 31 \
 
 ### ALU
 
-Add Reg -> 40
-Xor Reg -> 50
-And Reg -> 60
-Or Reg -> 70
+Add Reg -> 40 \
+Xor Reg -> 50 \
+And Reg -> 60 \
+Or Reg -> 70 \
 
 ### Jump
 
@@ -91,4 +91,4 @@ under-use scanner part of the regex Python library.
 
 ## CPU Design
 
-![image](magic_cpu_design.pgn)
+![image](magic_cpu_design.png)
