@@ -100,6 +100,10 @@ load = re.Scanner([
     (r'load\s*r3,\s*', 'b3'),
 ])
 
+cmp = re.Scanner([
+    (r'\s*cmp\s*', 'c000'),
+])
+
 scanners = [
         # Regs
         mov_reg2reg,
@@ -111,6 +115,7 @@ scanners = [
         xor_2reg,
         or_2reg,
         and_2reg,
+        cmp,
 
         #Jumps
         jump,
@@ -121,8 +126,11 @@ scanners = [
 ]
 
 file = open(str(sys.argv[1]), "r")
+modulo = int(sys.argv[2])
 lines = file.readlines()
 
+print("v2.0 raw")
+cpt = 0
 separator = ''
 for line in lines:
     line = line.lower()
@@ -137,5 +145,12 @@ for line in lines:
                 token[-1] = swap
 
             token = separator.join(token)
-            print(line[:-1].ljust(15, ' ') + ": " + str(token))
+            # print(line[:-1].ljust(15, ' ') + ": " + str(token))
+
+            if cpt >= modulo:
+                cpt = 0
+                print("")
+            else:
+                cpt += 1
+            print(str(token) + ' ', end  = '');
             break;
