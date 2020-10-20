@@ -59,14 +59,19 @@ and_2reg = re.Scanner([
     (r'\s*and\s*r3\s*', '7C00'),
 ])
 
-def hexa_immed(scanner, token): return "%s" % format(int(token, 16), "02X")
+def hexa_immed(scanner, token): return "%s" % format(int(token.replace("0x", ""), 16), "02X")
 def dec_immed(scanner, token): return "%s" % format(int(token.replace("$", "")), "02X").replace("0x", "")
 
 jump = re.Scanner([
-    (r'0x\d+', hexa_immed),
+    (r'0x[0-9a-f]+', hexa_immed),
     (r'\$\d+', dec_immed),
     (r'\s*jump\s*', '90'),
-    (r'\s*,\s*', ''),
+])
+
+jumpeq = re.Scanner([
+    (r'0x[0-9a-f]+', hexa_immed),
+    (r'\$\d+', dec_immed),
+    (r'\s*jumpeq\s*', 'D0'),
 ])
 
 mov_immed2reg = re.Scanner([
@@ -118,6 +123,7 @@ scanners = [
         cmp,
 
         #Jumps
+        jumpeq,
         jump,
 
         #Ram
