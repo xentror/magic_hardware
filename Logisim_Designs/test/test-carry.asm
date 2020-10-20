@@ -5,4 +5,4 @@ mov acc2, r2
 add r2
 cmp
 store 0x0, r2
-jump $8
+jump $7
