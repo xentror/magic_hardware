@@ -65,7 +65,7 @@ Add Reg -> 5 \
 Xor Reg -> 6 \
 And Reg -> 7 \
 Or Reg -> 8 \
-Cmp -> 12 (C)
+Cmp -> 12 (C) : signed compare
 
 ### Jump
 
