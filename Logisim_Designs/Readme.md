@@ -41,43 +41,39 @@ but made it easier during the design.
 This CPU has 11 Instructions:
 All instruction are on 2bytes and are divided this way:
 ```
-XXXX XXXX XXXX XXXX
-|_______| |__| |__|
-  Instr   |Dst Src|
-  Opcode  |_______|
-               |_____ Immediate
+ __________________________________________
+| OPCODE | Reg Dst | Reg Src | Immed Value |
+ ------------------------------------------
+15      12         10        8             0
 ```
-The first byte is for the intruction type (mov, load, store, ...)
-The second byte can be interpreted as a Immediate value or can be
-divided into a Dst/Src structure.
+The first 4bits are for the intruction type (mov, load, store, ...).
+The next 2bits for Reg Dst and the following 2bits for Reg Src.
+The second byte can be interpreted as a Immediate value if needed.
 
 ### MOV
 
 Mov Dst, Src
 
-Mov Reg, Reg -> 10 \
-Mov Reg, Imm -> 11 \
-Mov Acc, Imm -> 12 \
-
-### Load
-
-Load Reg, ADDR -> 20
-
-### Store
-
-Store ADDR, Reg -> 30 \
-Store ADDR, Imm -> 31 \
+Mov Reg, Reg -> 1 \
+Mov Reg, Imm -> 2 \
+Mov Acc1, Reg -> 3 \
+Mov Acc2, Reg -> 4
 
 ### ALU
 
-Add Reg -> 40 \
-Xor Reg -> 50 \
-And Reg -> 60 \
-Or Reg -> 70 \
+Add Reg -> 5 \
+Xor Reg -> 6 \
+And Reg -> 7 \
+Or Reg -> 8 \
 
 ### Jump
 
-Jump ADDR -> 80
+Jump ADDR -> 9
+
+### Memory
+
+Load Reg, ADDR -> 10 (A) \
+Store ADDR, Reg -> 11 (B)
 
 ## Tests
 
