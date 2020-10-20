@@ -52,52 +52,62 @@ The second byte can be interpreted as a Immediate value if needed.
 
 ### MOV
 
+```
 Mov Dst, Src
 
-Mov Reg, Reg -> 1 \
-Mov Reg, Imm -> 2 \
-Mov Acc1, Reg -> 3 \
+Mov Reg, Reg -> 1
+Mov Reg, Imm -> 2
+Mov Acc1, Reg -> 3
 Mov Acc2, Reg -> 4
+```
 
 ### ALU
 
-Add Reg -> 5 \
-Xor Reg -> 6 \
-And Reg -> 7 \
-Or Reg -> 8 \
+```
+Add Reg -> 5
+Xor Reg -> 6
+And Reg -> 7
+Or Reg -> 8
 Cmp -> 12 (C) : signed compare
+```
 
 ### Jump
 
+```
 Jump ADDR -> 9
 Jumpeq ADDR -> 13 (D)
+```
 
 ### Memory
 
-Load Reg, ADDR -> 10 (A) \
+```
+Load Reg, ADDR -> 10 (A)
 Store ADDR, Reg -> 11 (B)
+```
 
 ## Controls Signals
 
-CS1 => Write on Reg \
-CS2 => Read on Reg \
-CS3 => Write on Acc1 \
-CS4 => Write on Acc2 \
-CS5 => Read Ouput ALU \
-CS6 => Ecriture PC \
-CS7 => Enable Ram Access \
-CS8 => Read Ram (1) / Write Ram (0) \
-CS9 => Write Immed Value \
-CS10 => Select Alu Operations (3bits) \
-    000 -> Add \
-    001 -> Xor \
-    010 -> Or \
-    011 -> And \
-    100 -> CMP \
-CS11 => Reset Cpu \
+```
+CS1 => Write on Reg
+CS2 => Read on Reg
+CS3 => Write on Acc1
+CS4 => Write on Acc2
+CS5 => Read Ouput ALU
+CS6 => Ecriture PC
+CS7 => Enable Ram Access
+CS8 => Read Ram (1) / Write Ram (0)
+CS9 => Write Immed Value
+CS10 => Select Alu Operations (3bits)
+    000 -> Add
+    001 -> Xor
+    010 -> Or
+    011 -> And
+    100 -> CMP
+CS11 => Reset Cpu
 CS12 => Jump Type (2bits)
-    00 -> Jump \
-    01 -> Jumpeq \
+    00 -> Jump
+    01 -> Jumpeq
+```
 
 ## Tests
 
