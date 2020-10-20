@@ -70,6 +70,7 @@ Cmp -> 12 (C) : signed compare
 ### Jump
 
 Jump ADDR -> 9
+Jumpeq ADDR -> 13 (D)
 
 ### Memory
 
@@ -88,7 +89,15 @@ CS7 => Enable Ram Access \
 CS8 => Read Ram (1) / Write Ram (0) \
 CS9 => Write Immed Value \
 CS10 => Select Alu Operations (3bits) \
-CS11 => Reset Cpu
+    000 -> Add \
+    001 -> Xor \
+    010 -> Or \
+    011 -> And \
+    100 -> CMP \
+CS11 => Reset Cpu \
+CS12 => Jump Type (2bits)
+    00 -> Jump \
+    01 -> Jumpeq \
 
 ## Tests
 
